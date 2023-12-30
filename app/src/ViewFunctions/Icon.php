@@ -24,9 +24,11 @@ class Icon extends ViewFunction
     {
         $icons = $this->config->get('icons');
 
-        $icon = $file->isDir() ? 'fas fa-folder'
-            : $icons[strtolower($file->getExtension())] ?? 'fas fa-file';
+        $icon = $file->isDir() ? 'folder.png'
+            : $icons[strtolower($file->getExtension())] ?? 'file.png';
 
-        return "<i class=\"{$icon} fa-fw fa-lg\"></i>";
+        $iconPath = "app/assets/images/icons/{$icon}";
+
+        return "<img src=\"{$iconPath}\" alt=\"{$file->getFilename()}\" width=\"18\" height=\"18\" />";
     }
 }
